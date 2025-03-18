@@ -8,7 +8,11 @@ int binary_search(int *arr, int n, int key){
     int end = n-1;
 
     while(start <= end){
-        int mid = (start + end)/2;
+        //int mid = (start + end)/2;
+        //int mid = start + (end - start)/2; // prevents overflow i.e if start and end are large numbers then there addition
+        //is larger. so it prevents it
+
+        int mid = start + ((end - start) >> 1); // Bitwise shifts are faster than div. / 2 is the same as shifting right by 1 bit (>> 1).
         if (arr[mid] == key){
             return mid;
         }
