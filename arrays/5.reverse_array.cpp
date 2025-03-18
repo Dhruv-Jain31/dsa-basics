@@ -8,7 +8,7 @@ void reverseArray(int *arr, int n){
     while (s < e){
         temp = arr[s];
         arr[s] = arr[e];
-        arr[e] = temp;
+        arr[e] = temp; // or swap(arr[s], arr[e]);
         s = s+1;
         e = e-1;
     }
