@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ int largestSubarraySum1(int arr[], int n){
     return largest_sum;
 }
 
+//works in O(N^2) times
 int prefix_sum(int arr[], int n){
     int prefix_sum[100] = {0};
     prefix_sum[0] = arr[0];
@@ -62,13 +64,41 @@ int prefix_sum(int arr[], int n){
     return largest_sum;
 }
 
+//in O(N)
+
+int kadane_algorithm(int arr[], int n){
+    int current_sum = 0, largest_sum = INT_MIN;
+    int start_index = 0, temp = 0, end_index = 0;
+
+    for(int i = 0; i<n; i++){
+        current_sum += arr[i];
+        if(current_sum > largest_sum){
+            largest_sum = current_sum;
+            start_index = temp;
+            end_index = i;
+        }
+
+        if(current_sum < 0){
+            current_sum = 0;
+            temp = i + 1;
+        }
+    }
+
+    cout << "Largest subarray sum by kadane's algo is : " << largest_sum << endl;
+    cout << "subarray is: ";
+    for(int i = start_index; i <= end_index; i++){
+        cout << arr[i] << ",";
+    }
+    cout << endl;
+    return largest_sum;
+}
+
 int main(){
-    int arr[] = {-2,3,4,-1,5,-12,6,1,3};
+    int arr[] = {-2,3,4,-1,5,-12,6,1,3,2};
     int n = sizeof(arr)/sizeof(int);
-    cout << "largest_subarray by brute_force is: " << endl;
     largestSubarraySum1(arr,n);
-    cout << "largest_subarray by prefix sum is: " << endl;
     prefix_sum(arr,n);
+    kadane_algorithm(arr,n);
 
     return 0;
 }
