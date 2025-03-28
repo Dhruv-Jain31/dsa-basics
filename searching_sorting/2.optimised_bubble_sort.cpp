@@ -3,7 +3,6 @@
 using namespace std;
 
 vector<int> optimizedBubbleSort(vector<int> v){
-    // your code  goes here
     int n = v.size();
     for(int i = 0; i < n - 1; i++){
         bool flag = false;
