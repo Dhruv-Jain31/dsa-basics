@@ -12,7 +12,7 @@ int main(){
     int n = sizeof(arr)/sizeof(int);
 
     //sort(arr, arr+n, greater<int>()); does the same work as the below function
-    sort(arr, arr+ n, compare); //this is not a fn call func is passed as a parameter to another function
+    sort(arr, arr + n, compare); //this is not a fn call func is passed as a parameter to another function
     //reverse(arr, arr + n);
 
     for(int x : arr){
