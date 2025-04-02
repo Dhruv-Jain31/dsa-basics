@@ -48,13 +48,30 @@ int pairSticks(vector<int> length, int D)
 {
     // your code goes here
     int count = 0;
+    vector<pair<int, int>> pairs;
     vector<int> sorted_length = insertion_sort(length);
     for(int i = 0; i<sorted_length.size();i++){
         for(int j = i+1; j< sorted_length.size(); j++){
             if(sorted_length[j] - sorted_length[i] == D){
                 count++;
+                pairs.push_back({sorted_length[j], sorted_length[i]});
             }
         }
     }
+    for(auto p: pairs){
+        cout << "(" << p.first << "," << p.second << ")" << endl;
+    }
     return count;
+}
+
+int main() {
+    // Sample test case
+    vector<int> length = {4,6,1,3,9,2,5}; // Stick lengths
+    int D = 2; // Maximum allowed difference
+
+    // Call the pairSticks function and output the result
+    int result = pairSticks(length, D);
+    cout << "Maximum number of pairs: " << result << endl;
+
+    return 0;
 }
