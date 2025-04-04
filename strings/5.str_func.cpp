@@ -1,27 +1,32 @@
-#include<iostream>
+#include <iostream>
 #include <cstring>
 using namespace std;
 
-int main(){
+int main() {
     char a[1000] = "apple";
     char b[1000];
 
-    //calc length
-    cout<< strlen(a) << endl;
+    // Copy and compare
+    strcpy(b, a);
+    cout << "strcmp(a, b): " << strcmp(a, b) << endl;  // Should be 0
 
-    //strcpy
-    strcpy(b,a);
-    cout<< b << endl;
-
-    //compare
-    cout << strcmp(a,b) << endl;
-
-    //concat
-    char web[] = "www.";
+    // Ensuring var web has enough space for strcat: else modification will be done at unknown memory locations
+    char web[1000] = "www.";
     char domain[] = "dhruv.com";
+    strcat(web, domain);
 
-    cout << strcat(web,domain) << endl;
+    cout << "web: " << web << endl;
+    cout << "strcmp(web, b): " << strcmp(b,web) << endl;  // return 1
 
-    //comparing again
-    cout << strcmp(strcat(web,domain),b);
+    // Manual ASCII difference calculation
+    int i = 0;
+    while (web[i] != '\0' && b[i] != '\0') {
+        if (web[i] != b[i]) {
+            cout << "ASCII difference: " << (int)(web[i] - b[i]) << endl;
+            break;
+        }
+        i++;
+    }
+
+    return 0;
 }
