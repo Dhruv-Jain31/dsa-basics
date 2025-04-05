@@ -45,11 +45,11 @@ using namespace std;
 vector<char> compress(vector<char>&chars){
     int len = chars.size();
     vector<char>output_char;
-    for(int i = 0; i<len;){
+    for(int i = 0; i<len;i++){
         char current = chars[i];
-        int count = 0;
+        int count = 1;
 
-        while(i<len && chars[i] == current){
+        while(i<len-1 && chars[i+1] == chars[i]){
             count++;
             i++;
         }
@@ -66,7 +66,7 @@ vector<char> compress(vector<char>&chars){
 }
 
 int main(){
-    vector<char> chars = {'a','b','b','b','b','b','b','b','b','b','b','b','c','c','c'};
+    vector<char> chars = {'a','a','b','b','b','b','b','b','b','b','b','b','b','c','c','c'};
     vector<char> new_array = compress(chars);
     for(auto ch: new_array){
         cout << ch << ",";
