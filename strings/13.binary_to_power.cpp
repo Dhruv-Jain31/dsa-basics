@@ -32,7 +32,7 @@ int binaryToDecimal(string s)
     
     for(int i = 0; i<s.size(); i++){
         if(s[i] == '1'){
-            output = output + pow(2,s.size() - i - 1); //going from right to left
+            output = output + pow(2,s.size() - i - 1); //going from right to left from LSB to MSB
         }
     }
     return output;
