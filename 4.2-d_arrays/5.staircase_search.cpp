@@ -25,3 +25,22 @@ pair<int,int> staircaseSearch(int arr[][4], int n, int m, int key){
     }
     return {-1,-1};
 }
+
+int main(){
+
+    int arr[][4] = {{10, 20, 30, 40},
+                    {15,25,35,45},
+                    {27,29,37,48},
+                    {32,33,39,50}};
+
+    int n = 4, m = 4;
+
+    int key;
+    cin >> key;
+
+    pair<int,int> cords = staircaseSearch(arr,n,m,key);
+
+    cout << cords.first << " " << cords.second << endl;
+
+    return 0;
+}
